@@ -1,0 +1,129 @@
+:root {
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 7vmin;
+  font-weight: bold;
+  /* color: rgba(255, 255, 255, 0.87); */
+  background-color: #242424;
+  box-sizing: border-box;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20%;
+  min-height: 10%;
+  gap: 1vmin;
+  border-radius: 4vmin;
+  border: none;
+  padding: 5vmin;
+  font-weight: bold;
+  font-size: 10vmin;
+  animation: gelatine 2s infinite;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+#app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.game-board {
+  z-index: 1;
+  --grid-size : 4;
+  --cell-size : 20vmin;
+  --cell-gap : 2vmin;
+  background-color: #ccc;
+  display: grid;
+  grid-template-columns: repeat(var(--grid-size), var(--cell-size));
+  grid-template-rows: repeat(var(--grid-size), var(--cell-size));
+  gap: var(--cell-gap);
+  border-radius: 1vmin;
+  padding: var(--cell-gap);
+  position: relative;
+}
+
+.restart {
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  z-index: 2;
+  height: 100vh;
+  width: 100vw;
+}
+
+
+.play {
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  z-index: 2;
+  height: 100vh;
+  width: 100vw;
+}
+
+
+.cell {
+  background-color: #aaa;
+  border-radius: 1vmin;
+  animation: show 200ms  ease-in-out;
+}
+
+.tile {
+  --x: 1;
+  --y: 2;
+  --background-lightness: 80%;
+  --text-lightness: 20%;
+  position: absolute;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  width: var(--cell-size);
+  height: var(--cell-size);
+  background-color: red;
+  border-radius: 1vmin;
+  top: calc(var(--y) * (var(--cell-size) + var(--cell-gap)) + var(--cell-gap));
+  left: calc(var(--x) * (var(--cell-size) + var(--cell-gap)) + var(--cell-gap));
+  background-color: hsl(200, 50%, var(--background-lightness));
+  color: hsl(200, 25%, var(--text-lightness));
+  animation: show 200ms  ease-in-out;
+  transition: 100ms ease-in-out;
+}
+
+@keyframes gelatine {
+  from, to { transform: scale(1, 1); }
+  10% { transform: scale(0.9, 1.1); }
+  20% { transform: scale(1.1, 0.9); }
+  30% { transform: scale(0.95, 1.05); }
+  40% { transform: scale(1, 1); }
+}
+
+@keyframes show {
+  0% {
+    opacity: 0.5;
+    transform: scale(0);
+  }
+}
